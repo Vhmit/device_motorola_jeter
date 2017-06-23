@@ -71,9 +71,6 @@ on post-fs
     chmod 0711 /mnt/vendor/persist/rfs/msm/mpss
     chmod 0771 /mnt/vendor/persist/rfs/msm/mpss/mot_rfs
 
-    swapon_all /vendor/etc/fstab.qcom
-    write /proc/sys/vm/page-cluster 0 
-
     # Set dm-verity property for system partition
     verity_update_state
 
@@ -274,3 +271,7 @@ on property:vendor.wifi.station=true
 
 on property:vendor.wifi.station=false
     write /sys/module/wlan/parameters/sar_sta disabled
+
+on property:sys.boot_completed=1
+    # Enable ZRAM on boot_complete
+    swapon_all /vendor/etc/fstab.qcom
