@@ -173,6 +173,7 @@ endif
 
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+CUSTOM_APNS_FILE := $(COMMON_PATH)/configs/sprint_apns.xml
 
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
