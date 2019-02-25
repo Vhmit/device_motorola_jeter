@@ -174,6 +174,9 @@ endif
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 CUSTOM_APNS_FILE := $(COMMON_PATH)/configs/sprint_apns.xml
 
+# Security patch level
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
