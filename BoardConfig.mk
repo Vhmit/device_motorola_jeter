@@ -65,9 +65,6 @@ TARGET_NO_BOOTLOADER := true
 # Build
 BUILD_BROKEN_DUP_RULES := true
 
-# Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
-
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -96,7 +93,6 @@ TARGET_FS_CONFIG_GEN := \
 
 # GPS
 LOC_HIDL_VERSION := 3.0
-USE_DEVICE_SPECIFIC_GPS := true
 
 # GPU
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
