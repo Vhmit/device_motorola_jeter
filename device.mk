@@ -402,6 +402,7 @@ PRODUCT_PACKAGES += \
     libwifi-hal-ctrl \
     libwpa_client \
     wcnss_service \
+    WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf
 
