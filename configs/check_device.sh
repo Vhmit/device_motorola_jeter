@@ -12,7 +12,7 @@ else
     rm /vendor/etc/mixer_paths_aljeter.xml
     rm /vendor/etc/thermal-engine-aljeter.conf
     rm /vendor/etc/sensors/sensor_def_qcomdev_aljeter.conf
-    rm /vendor/etc/permissions/android.hardware.vulkan.compute-0.xml
-    rm /vendor/etc/permissions/android.hardware.vulkan.level-0.xml
-    rm /vendor/etc/permissions/android.hardware.vulkan.version-1_1.xml
+    rm /vendor/etc/permissions/android.hardware.vulkan.compute.xml
+    rm /vendor/etc/permissions/android.hardware.vulkan.level.xml
+    rm /vendor/etc/permissions/android.hardware.vulkan.version.xml
 fi
