@@ -90,6 +90,13 @@ function blob_fixup() {
     vendor/lib64/libmdmcutback.so)
         sed -i "s|libqsap_sdk.so|libqsapshim.so|g" "${2}"
         ;;
+
+    # Missing symbols for ril
+    vendor/lib64/libril-qc-qmi-1.so)
+        for LIBCUTILS_SHIM in $(grep -L "libcutils_shim.so" "${2}"); do
+            "${PATCHELF}" --add-needed "libcutils_shim.so" "$LIBCUTILS_SHIM"
+        done
+	;;
     esac
 }
 
