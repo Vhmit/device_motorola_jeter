@@ -357,6 +357,7 @@ PRODUCT_COPY_FILES += \
 
 # Shims
 PRODUCT_PACKAGES += \
+    libmemset_shim \
     libqsapshim
 
 # Soong namespaces

@@ -66,7 +66,7 @@ vendor/lib64/libbtnv.so|f467a39938b8e76e3dea295ef412e69b6402254f
 vendor/lib64/vendor.qti.hardware.fm@1.0.so|b72b6bc0f79ef8289f4b543910e7e2d91961831f
 
 # Charger
-vendor/bin/charge_only_mode
+vendor/bin/charge_only_mode|200864f7dea23f124246246fc552d3037cb1d8b0
 
 # CNE
 -vendor/app/CneApp/CneApp.apk
