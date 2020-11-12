@@ -126,7 +126,6 @@ BOARD_KERNEL_CMDLINE := \
     ehci-hcd.park=3 \
     msm_rtb.filter=0x237 \
     loop.max_part=7 \
-    lpm_levels.sleep_disabled=1 \
     user_debug=30 \
     vmalloc=400M
 
