@@ -77,7 +77,6 @@ PRODUCT_PACKAGES += \
     gralloc.msm8937 \
     hwcomposer.msm8937 \
     libdisplayconfig \
-    liboverlay \
     libqdMetaData.system \
     libtinyxml \
     libvulkan \
