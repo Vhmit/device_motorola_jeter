@@ -33,3 +33,5 @@ BUILD_FINGERPRINT := motorola/jeter/jeter:9/PPPS29.118-57-5/d3be1:user/release-k
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 TARGET_BOOT_ANIMATION_RES := 720
+
+TARGET_GAPPS_ARCH := arm64
