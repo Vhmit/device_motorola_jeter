@@ -86,6 +86,11 @@ function blob_fixup() {
         sed -i "s/libgui/libwui/" "${2}"
         ;;
 
+    # Fix camera recording
+    vendor/lib/libmmcamera2_pproc_modules.so)
+        sed -i "s/ro.product.manufacturer/ro.product.nopefacturer/" "${2}"
+        ;;
+
     vendor/lib64/libmdmcutback.so)
         sed -i "s|libqsap_sdk.so|libqsapshim.so|g" "${2}"
         ;;
