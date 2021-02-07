@@ -42,4 +42,3 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Inherit from the proprietary version
 include vendor/motorola/jeter/BoardConfigVendor.mk
-
