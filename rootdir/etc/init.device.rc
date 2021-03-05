@@ -12,15 +12,31 @@ service vendor.sensor-sh /vendor/bin/init.qcom.sensors.sh
 on property:ro.boot.hardware.sku=XT1922-2
     setprop ro.opengles.version 196610
     setprop ro.boot.product.hardware.sku n
+    mount none /vendor/etc/audio_platform_info.xml /vendor/etc/audio_platform_info.xml bind
+    mount none /vendor/etc/mixer_paths.xml /vendor/etc/mixer_paths.xml bind
+    mount none /vendor/etc/thermal-engine-aljeter.conf /vendor/etc/thermal-engine.conf bind
+    mount none /vendor/etc/sensors/sensor_def_qcomdev.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
 
 on property:ro.boot.hardware.sku=XT1922-4
     setprop ro.opengles.version 196610
+    mount none /vendor/etc/audio_platform_info.xml /vendor/etc/audio_platform_info.xml bind
+    mount none /vendor/etc/mixer_paths.xml /vendor/etc/mixer_paths.xml bind
+    mount none /vendor/etc/thermal-engine-aljeter.conf /vendor/etc/thermal-engine.conf bind
+    mount none /vendor/etc/sensors/sensor_def_qcomdev.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
 
 on property:ro.boot.hardware.sku=XT1922-5
     setprop ro.opengles.version 196610
+    mount none /vendor/etc/audio_platform_info.xml /vendor/etc/audio_platform_info.xml bind
+    mount none /vendor/etc/mixer_paths.xml /vendor/etc/mixer_paths.xml bind
+    mount none /vendor/etc/thermal-engine-aljeter.conf /vendor/etc/thermal-engine.conf bind
+    mount none /vendor/etc/sensors/sensor_def_qcomdev.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
 
 on property:ro.boot.hardware.sku=XT1922-10
     setprop ro.opengles.version 196610
+    mount none /vendor/etc/audio_platform_info.xml /vendor/etc/audio_platform_info.xml bind
+    mount none /vendor/etc/mixer_paths.xml /vendor/etc/mixer_paths.xml bind
+    mount none /vendor/etc/thermal-engine-aljeter.conf /vendor/etc/thermal-engine.conf bind
+    mount none /vendor/etc/sensors/sensor_def_qcomdev.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
 
 on property:ro.boot.hardware.sku=XT1922-6
     setprop ro.opengles.version 196608
