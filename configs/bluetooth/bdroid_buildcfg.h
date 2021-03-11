@@ -22,48 +22,7 @@
 
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
-
-#pragma push_macro("PROPERTY_VALUE_MAX")
-
-#include <cutils/properties.h>
-#include <string.h>
-
-#include "osi/include/osi.h"
-
-typedef struct {
-    const char *product_device;
-    const char *product_model;
-} device_t;
-
-static const device_t devices[] = {
-    {"ahannah", "moto e5 plus"},
-    {"cedric", "moto g5"},
-    {"hannah", "moto e5 plus"},
-    {"james", "moto e5 play"},
-    {"jeter", "moto g6 play"},
-    {"montana", "moto g5s"},
-    {"rhannah", "moto e5 plus"},
-};
-
-static inline const char *BtmGetDefaultName()
-{
-    char product_device[PROPERTY_VALUE_MAX];
-    property_get("ro.product.device", product_device, "");
-
-    for (unsigned int i = 0; i < ARRAY_SIZE(devices); i++) {
-        device_t device = devices[i];
-
-        if (strcmp(device.product_device, product_device) == 0) {
-            return device.product_model;
-        }
-    }
-
-    // Fallback to ro.product.model
-    return "";
-}
-
-#define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
-#undef PROPERTY_VALUE_MAX
+#define BTM_DEF_LOCAL_NAME   "Moto G6 Play"
 // Disables read remote device feature
 #define MAX_ACL_CONNECTIONS   16
 #define MAX_L2CAP_CHANNELS    16
@@ -78,7 +37,4 @@ static inline const char *BtmGetDefaultName()
 
 /* Enable HFP WBS feature */
 #define BTIF_HF_CLIENT_WBS_INCLUDED TRUE
-
-#pragma pop_macro("PROPERTY_VALUE_MAX")
-
 #endif

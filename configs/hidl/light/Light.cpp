@@ -4,7 +4,7 @@
  * Copyright (C) 2019, Harshit Jain
  */
 
-#define LOG_TAG "android.hardware.light@2.0-service.msm8937"
+#define LOG_TAG "android.hardware.light@2.0-service.jeter"
 
 #include <log/log.h>
 #include <fstream>
