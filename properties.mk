@@ -71,6 +71,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.core_ctl_min_cpu=2 \
     ro.vendor.qti.core_ctl_max_cpu=4
 
+# Dalvik
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=192m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapmaxfree=8m
+
 # Debug
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
@@ -186,6 +195,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.sar_sensor=1 \
+    ro.hardware.sensors=jeter \
     ro.vendor.sensors.pmd=false \
     ro.vendor.sensors.rmd=false \
     ro.vendor.sdk.sensors.gestures=false \

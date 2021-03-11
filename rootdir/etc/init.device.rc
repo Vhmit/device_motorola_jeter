@@ -1,0 +1,51 @@
+service vendor.sensors.qti /vendor/bin/sensors.qti
+    class core
+    user system
+    group system
+    disabled
+
+service vendor.sensor-sh /vendor/bin/init.qcom.sensors.sh
+    class core
+    user root
+    oneshot
+
+on property:ro.boot.hardware.sku=XT1922-2
+    setprop dalvik.vm.dex2oat-threads 6
+    setprop persist.vendor.audio.fluence.speaker false
+    setprop ro.boot.product.hardware.sku n
+    setprop ro.opengles.version 196610
+
+on property:ro.boot.hardware.sku=XT1922-3
+    setprop dalvik.vm.dex2oat-threads 6
+    setprop persist.vendor.audio.fluence.speaker false
+    setprop ro.opengles.version 196610
+
+on property:ro.boot.hardware.sku=XT1922-4
+    setprop dalvik.vm.dex2oat-threads 6
+    setprop persist.vendor.audio.fluence.speaker false
+    setprop ro.opengles.version 196610
+
+on property:ro.boot.hardware.sku=XT1922-5
+    setprop dalvik.vm.dex2oat-threads 6
+    setprop persist.vendor.audio.fluence.speaker false
+    setprop ro.opengles.version 196610
+
+on property:ro.boot.hardware.sku=XT1922-10
+    setprop dalvik.vm.dex2oat-threads 6
+    setprop persist.vendor.audio.fluence.speaker false
+    setprop ro.opengles.version 196610
+
+on property:ro.boot.hardware.sku=XT1922-6
+    setprop dalvik.vm.dex2oat-threads 2
+    setprop persist.vendor.audio.fluence.speaker true
+    setprop ro.opengles.version 196608
+
+on property:ro.boot.hardware.sku=XT1922-7
+    setprop dalvik.vm.dex2oat-threads 2
+    setprop persist.vendor.audio.fluence.speaker true
+    setprop ro.opengles.version 196608
+
+on property:ro.boot.hardware.sku=XT1922-9
+    setprop dalvik.vm.dex2oat-threads 2
+    setprop persist.vendor.audio.fluence.speaker true
+    setprop ro.opengles.version 196608

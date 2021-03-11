@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-COMMON_PATH := device/motorola/msm8937-common
+DEVICE_PATH := device/motorola/jeter
 
 # Architecture
 TARGET_ARCH := arm64
@@ -47,8 +47,11 @@ BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := jeter,aljeter
+
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/configs/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_READ_ADDR_FROM_PROP := true
 
@@ -70,6 +73,12 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_NO_CHARGER_LED := true
 
+# Display
+TARGET_SCREEN_DENSITY := 300
+
+# DRM
+TARGET_ENABLE_MEDIADRM_64 := true
+
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
   ifneq ($(TARGET_BUILD_VARIANT),eng)
@@ -80,18 +89,10 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
-# DRM
-TARGET_ENABLE_MEDIADRM_64 := true
-
-ifeq ($(filter jeter,$(TARGET_DEVICE)),)
-# Encryption
-TARGET_HW_DISK_ENCRYPTION := true
-endif
-
 # Filesystem
 TARGET_FS_CONFIG_GEN := \
-    $(COMMON_PATH)/configs/filesystem/config.fs \
-    $(COMMON_PATH)/configs/filesystem/mot_aids.fs
+    $(DEVICE_PATH)/configs/filesystem/config.fs \
+    $(DEVICE_PATH)/configs/filesystem/mot_aids.fs
 
 # GPS
 LOC_HIDL_VERSION := 3.0
@@ -104,16 +105,13 @@ TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
 
 # HIDL
-DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/configs/vintf/framework_manifest.xml
-ifeq ($(filter aljeter jeter,$(TARGET_DEVICE)),)
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/vintf/cryptfs_hw.xml
-endif
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/configs/vintf/manifest.xml
-DEVICE_MATRIX_FILE   := $(COMMON_PATH)/configs/vintf/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/framework_manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/manifest.xml
+DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_msm8937
-TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8937
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_jeter
+TARGET_RECOVERY_DEVICE_MODULES := libinit_jeter
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
@@ -135,10 +133,16 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x1000000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-TARGET_KERNEL_SOURCE := kernel/motorola/msm8937
+TARGET_KERNEL_CONFIG := jeter_defconfig
+TARGET_KERNEL_SOURCE := kernel/motorola/jeter
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
+
+# NFC
+NXP_CHIP_TYPE := pn553
+ODM_MANIFEST_SKUS += n
+ODM_MANIFEST_N_FILES := $(DEVICE_PATH)/configs/vintf/odm_manifest_n.xml
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
@@ -146,13 +150,15 @@ TARGET_BOARD_PLATFORM := msm8937
 TARGET_BOARD_SUFFIX := _64
 
 # Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE ?= 16777216
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_CACHEIMAGE_PARTITION_SIZE ?= 268435456
+BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_FLASH_BLOCK_SIZE := 131072
-BOARD_SYSTEMIMAGE_PARTITION_SIZE ?= 2516582400
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 18976768
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2516582400
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 27124546560
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_VENDORIMAGE_PARTITION_SIZE ?= 419430400
+BOARD_VENDORIMAGE_PARTITION_SIZE := 419430400
 LZMA_RAMDISK_TARGETS := recovery
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -162,26 +168,22 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_INTERACTION_BOOST := true
 
 # Recovery
-ifneq ($(filter jeter,$(TARGET_DEVICE)),)
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_A.qcom
-else ifeq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_legacy.qcom
-else
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
-endif
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
-CUSTOM_APNS_FILE := $(COMMON_PATH)/configs/sprint_apns.xml
+CUSTOM_APNS_FILE := $(DEVICE_PATH)/configs/sprint_apns.xml
 
 # Security patch level
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/public
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
@@ -202,4 +204,4 @@ WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
--include vendor/motorola/msm8937-common/BoardConfigVendor.mk
+-include vendor/motorola/jeter/BoardConfigVendor.mk
