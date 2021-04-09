@@ -424,4 +424,4 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/motorola/jeter/jeter-vendor.mk)
+$(call inherit-product, vendor/motorola/jeter/jeter-vendor.mk)
