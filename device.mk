@@ -8,7 +8,7 @@
 $(call inherit-product, device/motorola/msm8937-common/msm8937.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/motorola/jeter/jeter-vendor.mk)
+$(call inherit-product, vendor/motorola/jeter/jeter-vendor.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1440
