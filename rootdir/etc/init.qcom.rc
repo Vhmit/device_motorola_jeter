@@ -149,6 +149,9 @@ on boot
     # default country code
     setprop ro.boot.wificountrycode 00
 
+    # QTI PowerHAL
+    chown system system /sys/kernel/hbtp/display_pwr
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
