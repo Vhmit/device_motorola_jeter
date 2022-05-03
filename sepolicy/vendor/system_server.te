@@ -3,3 +3,6 @@ r_dir_file(system_server, vendor_idc_file);
 r_dir_file(system_server, vendor_keylayout_file);
 
 allow system_server rild:binder call;
+
+# charging switch
+allow system_server sysfs_device_info:file { getattr open read write };
