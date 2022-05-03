@@ -21,3 +21,6 @@ type sysfs_healthd, fs_type, sysfs_type, mlstrustedobject;
 
 # Radio
 type cutback_ipc_file, file_type, data_file_type;
+
+# device info
+type sysfs_device_info, fs_type, sysfs_type, mlstrustedobject;

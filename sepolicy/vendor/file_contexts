@@ -60,3 +60,11 @@
 # Vibrator
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service.jeter u:object_r:hal_vibrator_default_exec:s0
 /sys/devices/virtual/timed_output/vibrator/voltage_level u:object_r:sysfs_vibrator:s0
+
+# smart charging/cutoff
+/sys/class/power_supply/battery/charging_enabled                u:object_r:sysfs_device_info:s0
+/sys/class/power_supply/battery/temp                            u:object_r:sysfs_device_info:s0
+
+# system info
+/sys/class/thermal/thermal_zone0/temp                         u:object_r:sysfs_device_info:s0
+/sys/devices/virtual/graphics/fb0/measured_fps                u:object_r:sysfs_device_info:s0

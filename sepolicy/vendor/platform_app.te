@@ -3,3 +3,11 @@ allow platform_app sysfs_kgsl:dir { search };
 # Dolby
 allow platform_app hal_dms_hwservice:hwservice_manager find;
 allow platform_app hal_dms_default:binder { call transfer };
+
+# system info
+allow platform_app sysfs_device_info:dir search;
+allow platform_app sysfs_device_info:file { getattr open read };
+allow platform_app sysfs_device_info:dir search;
+allow platform_app sysfs_device_info:file { getattr open read }; 
+allow platform_app sysfs_device_info:dir search;
+allow platform_app sysfs_device_info:file { getattr open read };
