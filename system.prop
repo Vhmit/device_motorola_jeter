@@ -1,0 +1,23 @@
+# FPS Stabilizer
+debug.sf.showupdates=0
+debug.sf.showcpu=0
+debug.sf.showbackground=0
+debug.sf.showfps=0
+ro.opengl.off=0
+
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
+
+# Misc
+ro.allow.mock.location=0
+persist.sys.ui.hw=1
+persist.sys.shutdown.mode=hibernate
+ro.warmboot.capability=1
+ro.config.hw_quickpoweron=true
+ro.ril.sensor.sleep.control=1
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+ro.compcache.default=0
+
+# Sensors
+ro.hardware.sensors=jeter
