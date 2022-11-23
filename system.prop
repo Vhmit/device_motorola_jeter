@@ -1,2 +1,34 @@
-# Blur
+# Blur disable
 ro.surface_flinger.supports_background_blur=0
+ro.sf.blurs_are_expensive=0
+debug.sf.disable_backpressure=0
+ro.launcher.blur.appLaunch=0
+
+# FPS Stabilizer
+debug.sf.showupdates=0
+debug.sf.showcpu=0
+debug.sf.showbackground=0
+debug.sf.showfps=0
+ro.opengl.off=0
+hw2d.force=1
+
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
+
+# Misc
+ro.allow.mock.location=0
+persist.sys.ui.hw=1
+persist.sys.shutdown.mode=hibernate
+ro.warmboot.capability=1
+ro.config.hw_quickpoweron=true
+ro.ril.sensor.sleep.control=1
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+ro.compcache.default=0
+
+# SmoothUI
+persist.service.lgospd.enable=0
+persist.service.pcsync.enable=0
+
+# Sensors
+ro.hardware.sensors=jeter
