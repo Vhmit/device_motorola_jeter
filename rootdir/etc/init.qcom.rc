@@ -313,6 +313,9 @@ on property:sys.boot_completed=1
     # Optimize vfs cache pressure
     write /proc/sys/vm/vfs_cache_pressure 50
 
+    # Restrict permissions to socket file to hide Magisk
+    chmod 440 /proc/net/unix
+
 on property:persist.vendor.radio.atfwd.start=false
     stop vendor.atfwd
 
