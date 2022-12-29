@@ -13,7 +13,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
 # Target
 TARGET_BOOT_ANIMATION_RES := 720
 TARGET_INCLUDE_PIXEL_CHARGER := true
-ARROW_GAPPS := true
 
 # Inherit some common ArrowOS stuff.
 $(call inherit-product, vendor/arrow/config/common.mk)
