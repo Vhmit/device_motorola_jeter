@@ -1,9 +1,3 @@
-# Blur disable
-ro.surface_flinger.supports_background_blur=0
-ro.sf.blurs_are_expensive=0
-debug.sf.disable_backpressure=0
-ro.launcher.blur.appLaunch=0
-
 # FPS Stabilizer
 debug.sf.showupdates=0
 debug.sf.showcpu=0
