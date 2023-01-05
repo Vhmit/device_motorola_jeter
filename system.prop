@@ -1,2 +1,5 @@
 # Blur
 ro.surface_flinger.supports_background_blur=0
+
+# Sensors
+ro.hardware.sensors=jeter
