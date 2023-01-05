@@ -3,3 +3,13 @@ ro.surface_flinger.supports_background_blur=0
 
 # Sensors
 ro.hardware.sensors=jeter
+
+# Misc
+ro.allow.mock.location=0
+persist.sys.shutdown.mode=hibernate
+ro.warmboot.capability=1
+ro.config.hw_quickpoweron=true
+ro.ril.sensor.sleep.control=1
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+ro.compcache.default=0
