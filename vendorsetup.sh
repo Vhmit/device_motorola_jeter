@@ -1,16 +1,16 @@
 # Clone/Fetch Upstream Device Dependencies
 # Device tree
 echo "cloning commmon"
-git clone -b A12/aljeter git@github.com:5H4ND/device_motorola_msm8937-common.git device/motorola/msm8937-common
+git clone https://github.com/Vhmit/device_motorola_msm8937-common -b lineage-19.1 device/motorola/msm8937-common
 echo ""
 
 echo "cloning vendor blobs"
-git clone -b A12/aljeter git@github.com:5H4ND/android_vendor_motorola.git vendor/motorola
+git clone https://github.com/Vhmit/android_vendor_motorola -b lineage-19.1 vendor/motorola
 echo ""
 
 # Kernel
 echo "cloning kernel and clang"
-git clone -b aljeter git@github.com:5H4ND/kernel_motorola_msm8953.git kernel/motorola/msm8953
+git clone https://github.com/Vhmit/kernel_motorola_msm8937 -b Hekireki-4.9 kernel/motorola/msm8937
 git clone --depth=1 -b master https://github.com/kdrag0n/proton-clang prebuilts/clang/host/linux-x86/proton-clang
 echo ""
 
