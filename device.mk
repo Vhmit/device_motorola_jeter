@@ -325,6 +325,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/check_device.sh:install/bin/check_device.sh
 
+# Recorder
+PRODUCT_PACKAGES += \
+    Recorder
+
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
