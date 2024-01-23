@@ -95,6 +95,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
    dalvik.vm.dex2oat64.enabled=true
 
+# Dexopt
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    pm.dexopt.first-boot=quicken \
+    pm.dexopt.bg-dexopt=everything
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.hwc_set_default_colormode=true \
