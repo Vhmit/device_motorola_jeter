@@ -5,6 +5,7 @@
 #
 
 DEVICE_PATH := device/motorola/jeter
+KERNEL_PATH := device/motorola/jeter-kernel
 
 # Architecture
 TARGET_ARCH := arm64
@@ -120,16 +121,14 @@ BOARD_KERNEL_CMDLINE := \
     user_debug=30 \
     vmalloc=400M
 
-BOARD_KERNEL_IMAGE_NAME := Image.gz
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_SEPARATED_DT := true
+BOARD_KERNEL_SEPARATED_DT := false
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x1000000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CONFIG := jeter_defconfig
-TARGET_KERNEL_SOURCE := kernel/motorola/jeter
+TARGET_NO_KERNEL_OVERRIDE := true
+TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true

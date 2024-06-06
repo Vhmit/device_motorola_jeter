@@ -188,6 +188,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
+# Kernel
+LOCAL_KERNEL := device/motorola/jeter-kernel/Image.gz-dtb
+PRODUCT_COPY_FILES += \
+	$(LOCAL_KERNEL):kernel
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.jeter
