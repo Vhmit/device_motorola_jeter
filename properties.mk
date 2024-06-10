@@ -131,6 +131,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.max_virtual_display_dimension=4096 \
     ro.surface_flinger.use_color_management=true
 
+# HW timeout multiplier
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hw_timeout_multiplier=6
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.mm.enable.qcom_parser=4643 \
