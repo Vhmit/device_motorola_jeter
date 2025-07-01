@@ -6,6 +6,9 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
+# Inherit some apps
+$(call inherit-product, device/motorola/extras/main.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
@@ -63,7 +66,6 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     libbson.vendor \
-    Snap \
     libstdc++.vendor \
     libwui
 
