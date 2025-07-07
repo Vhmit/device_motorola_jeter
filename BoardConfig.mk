@@ -128,6 +128,8 @@ BOARD_RAMDISK_OFFSET := 0x1000000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/clang-r383902
+TARGET_KERNEL_CLANG_VERSION := clang-r383902
 TARGET_KERNEL_CONFIG := jeter_defconfig
 TARGET_KERNEL_SOURCE := kernel/motorola/jeter
 
