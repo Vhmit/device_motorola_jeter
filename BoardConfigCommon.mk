@@ -93,10 +93,6 @@ TARGET_FS_CONFIG_GEN := \
     $(COMMON_PATH)/configs/filesystem/config.fs \
     $(COMMON_PATH)/configs/filesystem/mot_aids.fs
 
-# FM
-BOARD_HAVE_QCOM_FM := true
-TARGET_QCOM_NO_FM_FIRMWARE := true
-
 # GPS
 LOC_HIDL_VERSION := 3.0
 USE_DEVICE_SPECIFIC_GPS := true
