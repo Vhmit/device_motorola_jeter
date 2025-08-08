@@ -154,9 +154,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hidl.manager@1.0-java
 
+ifeq ($(filter jeter,$(TARGET_DEVICE)),)
 # HW crypto
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
+endif
 
 # IMS
 PRODUCT_PACKAGES += \

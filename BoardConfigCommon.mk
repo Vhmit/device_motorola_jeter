@@ -86,8 +86,10 @@ endif
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
+ifeq ($(filter jeter,$(TARGET_DEVICE)),)
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
+endif
 
 # FM
 BOARD_HAVE_QCOM_FM := true
@@ -106,6 +108,9 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # HIDL
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
+ifeq ($(filter aljeter jeter,$(TARGET_DEVICE)),)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/cryptfs_hw.xml
+endif
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE   := $(COMMON_PATH)/compatibility_matrix.xml
 TARGET_FS_CONFIG_GEN += \
@@ -148,7 +153,9 @@ TARGET_USES_INTERACTION_BOOST := true
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-ifeq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
+ifneq ($(filter jeter,$(TARGET_DEVICE)),)
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_A.qcom
+else ifeq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_legacy.qcom
 else
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom

@@ -6,7 +6,9 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := fstab.qcom
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
-ifeq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
+ifneq ($(filter jeter,$(TARGET_DEVICE)),)
+LOCAL_SRC_FILES    := etc/fstab_A.qcom
+else ifeq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
 LOCAL_SRC_FILES := etc/fstab_legacy.qcom
 else
 LOCAL_SRC_FILES := etc/fstab.qcom
@@ -19,7 +21,9 @@ LOCAL_MODULE := fstab_ramdisk.qcom
 LOCAL_MODULE_STEM := fstab.qcom
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
-ifeq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
+ifneq ($(filter jeter,$(TARGET_DEVICE)),)
+LOCAL_SRC_FILES    := etc/fstab_A.qcom
+else ifeq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
 LOCAL_SRC_FILES := etc/fstab_legacy.qcom
 else
 LOCAL_SRC_FILES := etc/fstab.qcom
