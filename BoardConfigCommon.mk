@@ -6,14 +6,6 @@
 
 COMMON_PATH := device/motorola/msm8937-common
 
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := MSM8937
-TARGET_NO_BOOTLOADER := true
-
-# Platform
-TARGET_BOARD_PLATFORM := msm8937
-TARGET_BOARD_SUFFIX := _64
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -27,8 +19,6 @@ TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
-
-BUILD_BROKEN_DUP_RULES := true
 
 # Audio
 AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
@@ -65,6 +55,13 @@ QCOM_BT_READ_ADDR_FROM_PROP := true
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := MSM8937
+TARGET_NO_BOOTLOADER := true
+
+# Build
+BUILD_BROKEN_DUP_RULES := true
+
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 
@@ -91,6 +88,11 @@ ifeq ($(filter jeter,$(TARGET_DEVICE)),)
 TARGET_HW_DISK_ENCRYPTION := true
 endif
 
+# Filesystem
+TARGET_FS_CONFIG_GEN := \
+    $(COMMON_PATH)/configs/filesystem/config.fs \
+    $(COMMON_PATH)/configs/filesystem/mot_aids.fs
+
 # FM
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
@@ -100,57 +102,65 @@ LOC_HIDL_VERSION := 3.0
 USE_DEVICE_SPECIFIC_GPS := true
 
 # GPU
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
 
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
 # HIDL
-DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/configs/vintf/framework_manifest.xml
 ifeq ($(filter aljeter jeter,$(TARGET_DEVICE)),)
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/cryptfs_hw.xml
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/vintf/cryptfs_hw.xml
 endif
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-DEVICE_MATRIX_FILE   := $(COMMON_PATH)/compatibility_matrix.xml
-TARGET_FS_CONFIG_GEN += \
-    $(COMMON_PATH)/config.fs \
-    $(COMMON_PATH)/mot_aids.fs
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/configs/vintf/manifest.xml
+DEVICE_MATRIX_FILE   := $(COMMON_PATH)/configs/vintf/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78B0000 vmalloc=400M
-BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_CMDLINE := \
+    androidboot.bootdevice=7824900.sdhci \
+    androidboot.console=ttyHSL0 \
+    androidboot.hardware=qcom \
+    console=ttyHSL0,115200,n8 \
+    earlycon=msm_hsl_uart,0x78B0000 \
+    ehci-hcd.park=3 \
+    msm_rtb.filter=0x237 \
+    loop.max_part=7 \
+    lpm_levels.sleep_disabled=1 \
+    user_debug=30 \
+    vmalloc=400M
+
+BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x1000000
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-
-TARGET_KERNEL_SOURCE := kernel/motorola/msm8953
+TARGET_KERNEL_SOURCE := kernel/motorola/msm8937
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
 
+# Platform
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_BOARD_PLATFORM := msm8937
+TARGET_BOARD_SUFFIX := _64
+
 # Partitions
-BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_BOOTIMAGE_PARTITION_SIZE ?= 16777216
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
-BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2516582400
-BOARD_VENDORIMAGE_PARTITION_SIZE := 419430400
+BOARD_CACHEIMAGE_PARTITION_SIZE ?= 268435456
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_SYSTEMIMAGE_PARTITION_SIZE ?= 2516582400
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_PARTITION_SIZE ?= 419430400
+LZMA_RAMDISK_TARGETS := recovery
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-LZMA_RAMDISK_TARGETS := recovery
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
-
-# Qualcomm support
-BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 ifneq ($(filter jeter,$(TARGET_DEVICE)),)
@@ -189,4 +199,4 @@ WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
--include vendor/motorola/msm8937-common/BoardConfigCommonVendor.mk
+-include vendor/motorola/msm8937-common/BoardConfigVendor.mk
