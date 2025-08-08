@@ -115,6 +115,10 @@ endif
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/configs/vintf/manifest.xml
 DEVICE_MATRIX_FILE   := $(COMMON_PATH)/configs/vintf/compatibility_matrix.xml
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_msm8937
+TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8937
+
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := \
