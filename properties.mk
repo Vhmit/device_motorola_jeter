@@ -127,6 +127,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.bservice_limit=5 \
     ro.vendor.qti.sys.fw.bservice_age=5000
 
+# Mobile Data
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.android.mobiledata=false
+
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so \
