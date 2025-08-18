@@ -4,9 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit some apps
-$(call inherit-product, device/motorola/extras/main.mk)
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
@@ -48,6 +45,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
+
+TARGET_EXCLUDES_AUDIOFX := true
 
 # Boot animation
 TARGET_BOOT_ANIMATION_RES := 720
@@ -275,6 +274,11 @@ PRODUCT_COPY_FILES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2-service-qti
+
+# Prebuilt packages
+PRODUCT_PACKAGES += \
+    CamX \
+    Via
 
 # Properties
 -include $(LOCAL_PATH)/properties.mk
