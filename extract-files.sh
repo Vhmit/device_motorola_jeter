@@ -14,9 +14,9 @@ VENDOR=motorola
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-LINEAGE_ROOT="${MY_DIR}"/../../..
+ANDROID_ROOT="${MY_DIR}/../../.."
 
-HELPER="${LINEAGE_ROOT}/vendor/lineage/build/tools/extract_utils.sh"
+HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
     exit 1
@@ -26,11 +26,14 @@ source "${HELPER}"
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=true
 
+KANG=
+SECTION=
+
 while [ "${#}" -gt 0 ]; do
     case "${1}" in
         -n | --no-cleanup )
-            CLEAN_VENDOR=false
-            ;;
+                CLEAN_VENDOR=false
+                ;;
         -k | --kang )
                 KANG="--kang"
                 ;;
@@ -53,7 +56,7 @@ fi
 function blob_fixup() {
     case "${1}" in
     lib64/libwfdnative.so)
-        patchelf --remove-needed android.hidl.base@1.0.so "${2}"
+        "${PATCHELF}" --remove-needed android.hidl.base@1.0.so "${2}"
         ;;
 
     product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml | product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml)
@@ -62,19 +65,19 @@ function blob_fixup() {
 
     # memset shim
     vendor/bin/charge_only_mode)
-        patchelf --add-needed libmemset_shim.so "${2}"
+        "${PATCHELF}" --add-needed libmemset_shim.so "${2}"
         ;;
 
     vendor/lib/hw/activity_recognition.msm8937.so | vendor/lib64/hw/activity_recognition.msm8937.so)
-        patchelf --set-soname activity_recognition.msm8937.so "${2}"
+        "${PATCHELF}" --set-soname activity_recognition.msm8937.so "${2}"
         ;;
 
     vendor/lib64/hw/gatekeeper.msm8937.so)
-        patchelf --set-soname gatekeeper.msm8937.so "${2}"
+        "${PATCHELF}" --set-soname gatekeeper.msm8937.so "${2}"
         ;;
 
     vendor/lib64/hw/keystore.msm8937.so)
-        patchelf --set-soname keystore.msm8937.so "${2}"
+        "${PATCHELF}" --set-soname keystore.msm8937.so "${2}"
         ;;
 
     vendor/lib/libjscore.so | vendor/lib/libmmcamera_vstab_module.so)
@@ -88,7 +91,7 @@ function blob_fixup() {
 }
 
 # Initialize the helper
-setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
 extract "${MY_DIR}/proprietary-files-qc.txt" "${SRC}" "${KANG}" --section "${SECTION}"
