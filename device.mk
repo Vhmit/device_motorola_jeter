@@ -23,7 +23,6 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8937 \
     audio.r_submix.default \
     audio.usb.default \
-    libaacwrapper \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing
@@ -209,8 +208,7 @@ PRODUCT_PACKAGES += \
 # Net
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
-    libandroid_net \
-    libnl
+    libandroid_net
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -423,10 +421,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/WCNSS_wlan_dictionary.dat:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_wlan_dictionary.dat \
     $(LOCAL_PATH)/configs/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-
-# WiFi Display
-PRODUCT_BOOT_JARS += \
-    WfdCommon
 
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/motorola/jeter/jeter-vendor.mk)
