@@ -35,8 +35,8 @@ vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
 
 # AptX
-lib64/libaptXHD_encoder.so
-lib64/libaptX_encoder.so
+system/lib64/libaptXHD_encoder.so
+system/lib64/libaptX_encoder.so
 
 # Audio
 vendor/lib/libacdb-fts.so
@@ -226,8 +226,8 @@ vendor/firmware/a530v3_seq.fw2|8963a53acc689725dee4b22881a4dd4b80e5def8
 vendor/firmware/a540_gpmu.fw2|3530f10b4825a3b08c79e0bcfaf6471ec8422f24
 
 # Graphics - from X00RD - QKQ1.191002.002-17.07.2003.405-20200330
-lib/libsdm-disp-apis.so:vendor/lib/libsdm-disp-apis.so|5b006423286008ba9b54b8c29e9ce2ab4b6fa14d
-lib64/libsdm-disp-apis.so:vendor/lib64/libsdm-disp-apis.so|25391818f65a4dfe3fdf0603109eacc4eedc4c13
+system/lib/libsdm-disp-apis.so:vendor/lib/libsdm-disp-apis.so|5b006423286008ba9b54b8c29e9ce2ab4b6fa14d
+system/lib64/libsdm-disp-apis.so:vendor/lib64/libsdm-disp-apis.so|25391818f65a4dfe3fdf0603109eacc4eedc4c13
 vendor/lib/egl/eglSubDriverAndroid.so|c90099d92d885e3533008cb422d872f6ebebc6d4
 vendor/lib/egl/libEGL_adreno.so|a3bb3c748cc180521a3b0ea173e714a55c01b118
 vendor/lib/egl/libGLESv1_CM_adreno.so|43c864f0c3f384085f9d19a2e1d56e672f319ea6
@@ -454,12 +454,12 @@ vendor/lib/libvqzip.so|0b906db131e99cd5460b8a72d05e86721243de95
 vendor/lib/libmot_afd.so
 
 # Perf - from X00RD - QKQ1.191002.002-17.07.2003.405-20200330
-lib/libqti-perfd-client_system.so|c021b1c1065161a15c2202747ef6738e89cd1b7b
-lib/libqti-util_system.so|3df0aa4365a085ab64ff1ae226bf724d0815aa25
-lib/libqti_performance.so|2a9f885d001661a1a5b8543c4d592afef34f7662
-lib64/libqti-perfd-client_system.so|4390474d5549c02f53911243c972968244f29391
-lib64/libqti-util_system.so|c3717d35a42c9d38e2ba18dac6756e3e9845d84f
-lib64/libqti_performance.so|2a6bfefe6eb7a68f0774774f5de7f363885c3d87
+system/lib/libqti-perfd-client_system.so|c021b1c1065161a15c2202747ef6738e89cd1b7b
+system/lib/libqti-util_system.so|3df0aa4365a085ab64ff1ae226bf724d0815aa25
+system/lib/libqti_performance.so|2a9f885d001661a1a5b8543c4d592afef34f7662
+system/lib64/libqti-perfd-client_system.so|4390474d5549c02f53911243c972968244f29391
+system/lib64/libqti-util_system.so|c3717d35a42c9d38e2ba18dac6756e3e9845d84f
+system/lib64/libqti_performance.so|2a6bfefe6eb7a68f0774774f5de7f363885c3d87
 vendor/bin/hw/vendor.qti.hardware.perf@2.0-service|ed731317514e1992ac919a49a1f98e14e7a60eff
 vendor/bin/msm_irqbalance|b5e55b4b0934b65b7dd5d2201f9a70f6f77a4e7c
 vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc|cc8658db5e19f8e5e575fb986e7d38147e675f8d
