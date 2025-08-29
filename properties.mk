@@ -17,7 +17,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.audio.sdk.fluencetype=fluence \
     ro.vendor.audio.sdk.ssr=false \
     vendor.audio_hal.period_size=240 \
-    vendor.audio.dolby.ds2.enabled=true \
     vendor.audio.hw.aac.encoder=false \
     vendor.audio.playback.mch.downsample=true \
     vendor.audio.offload.gapless.enabled=true \
@@ -107,6 +106,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.disable_backpressure=1 \
     debug.sf.enable_gl_backpressure=1
 
+# Dolby Atmos
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.audio_fx.current=dolby \
+    ro.vendor.dolby.dax.version=DS1_2.2.0.0_r1 \
+    vendor.audio.dolby.ds2.enabled=true \
+    vendor.audio.dolby.ds2.hardbypass=true
+
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
@@ -155,6 +161,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.omx_default_rank.sw-audio=16 \
     vendor.mm.enable.qcom_parser=4643 \
     vendor.vidc.enc.narrow.searchrange=1 \
     vendor.vidc.enc.disable.pq=true \
