@@ -171,6 +171,7 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
     </Decoders>
     <Include href="media_codecs_google_video.xml" />
+    <Include href="media_codecs_dolby_audio.xml" />
     <!-- BEGIN lenovo, tengzl1, ikswo-22492, override google VP9 Video encoder to match 8937's performance  -->
     <Encoders>
         <MediaCodec name="OMX.google.vp9.encoder" type="video/x-vnd.on2.vp9" update="y">
