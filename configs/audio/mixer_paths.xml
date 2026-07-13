@@ -29,9 +29,9 @@
     <ctl name="IIR1 INP2 Volume" value="84" />
     <ctl name="IIR1 INP3 Volume" value="84" />
     <ctl name="IIR1 INP4 Volume" value="84" />
-    <ctl name="ADC1 Volume" value="6" />
-    <ctl name="ADC2 Volume" value="6" />
-    <ctl name="ADC3 Volume" value="6" />
+    <ctl name="ADC1 Volume" value="10" />
+    <ctl name="ADC2 Volume" value="10" />
+    <ctl name="ADC3 Volume" value="10" />
     <ctl name="DEC1 Volume" value="84" />
     <ctl name="DEC2 Volume" value="84" />
     <ctl name="DEC2 MUX" value="ZERO" />
@@ -798,17 +798,17 @@
 
     <!-- These are actual sound device specific mixer settings -->
     <path name="adc1">
-        <ctl name="ADC1 Volume" value="6" />
+        <ctl name="ADC1 Volume" value="10" />
         <ctl name="DEC1 MUX" value="ADC1" />
     </path>
 
     <path name="adc2">
-        <ctl name="ADC2 Volume" value="6" />
+        <ctl name="ADC2 Volume" value="10" />
         <ctl name="DEC1 MUX" value="ADC2" />
     </path>
 
     <path name="adc3">
-        <ctl name="ADC3 Volume" value="6" />
+        <ctl name="ADC3 Volume" value="10" />
         <ctl name="DEC1 MUX" value="ADC2" />
         <ctl name="ADC2 MUX" value="INP3" />
     </path>
@@ -912,17 +912,17 @@
 
     <path name="mic1">
         <path name="adc1" />
-        <ctl name="ADC1 Volume" value="7" />
-        <ctl name="ADC2 Volume" value="0" />
-        <ctl name="ADC3 Volume" value="0" />
+        <ctl name="ADC1 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ADC3 Volume" value="10" />
     </path>
 
     <path name="mic2">
         <ctl name="DEC1 MUX" value="ADC3" />
         <ctl name="ADC2 MUX" value="INP3" />
-        <ctl name="ADC1 Volume" value="0" />
-        <ctl name="ADC2 Volume" value="0" />
-        <ctl name="ADC3 Volume" value="7" />
+        <ctl name="ADC1 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ADC3 Volume" value="10" />
     </path>
 
     <path name="voice-handset">
@@ -1006,7 +1006,7 @@
     <!-- Dual MIC devices -->
     <path name="speaker-dmic-endfire">
         <path name="adc1" />
-        <ctl name="ADC3 Volume" value="6" />
+        <ctl name="ADC3 Volume" value="10" />
         <ctl name="DEC2 MUX" value="ADC2" />
         <ctl name="MI2S_TX Channels" value="Two" />
         <ctl name="ADC2 MUX" value="INP3" />
@@ -1053,7 +1053,7 @@
 
     <path name="speaker-dmic-broadside">
         <path name="adc1" />
-        <ctl name="ADC3 Volume" value="6" />
+        <ctl name="ADC3 Volume" value="10" />
         <ctl name="DEC2 MUX" value="ADC2" />
         <ctl name="ADC2 MUX" value="INP3" />
         <ctl name="MI2S_TX Channels" value="Two" />
@@ -1099,7 +1099,7 @@
     <path name="voice-tty-full-headset-mic">
         <path name="adc2" />
         <ctl name="ADC2 MUX" value="INP2" />
-        <ctl name="ADC2 Volume" value="0" />
+        <ctl name="ADC2 Volume" value="10" />
     </path>
 
     <path name="voice-tty-hco-headset-mic">
