@@ -125,11 +125,18 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.use_color_management=true
 
 # Media
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    media.msm8956hw=0 \
+    mm.enable.smoothstreaming=true \
+    mm.sec.enable.smoothstreaming=true \
+    mmp.enable.3g2=true \
+    media.aac_51_output_enabled=true \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.mm.enable.qcom_parser=4643 \
-    vendor.vidc.enc.narrow.searchrange=1 \
-    vendor.vidc.enc.disable.pq=true \
+    vendor.mm.enable.qcom_parser=1048575 \
     vendor.vidc.disable.split.mode=1 \
+    vendor.vidc.enc.disable.pq=true \
     vendor.video.disable.ubwc=1
 
 # Memory optimizations
@@ -141,6 +148,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Mobile Data
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.mobiledata=false
+
+# OMX
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.omx_default_rank.sw-audio=1 \
+    debug.stagefright.omx_default_rank=0 \
+    media.stagefright.thumbnail.prefer_hw_codecs=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
