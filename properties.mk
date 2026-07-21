@@ -219,6 +219,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.cmc=false \
     ro.vendor.sensors.pedometer=false
 
+# Time Services
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.timed.enable=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.delta_time.enable=true
+
 # Trim properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.use_trim_settings=true \
