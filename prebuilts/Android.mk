@@ -1,8 +1,8 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := CamX
-LOCAL_SRC_FILES := CamX/CamX.apk
+LOCAL_MODULE := GoogleCameraGoPrebuilt
+LOCAL_SRC_FILES := GoogleCameraGoPrebuilt/GoogleCameraGoPrebuilt.apk
 LOCAL_MODULE_CLASS := APPS
 LOCAL_PRIVILEGED_MODULE := true
 LOCAL_OVERRIDES_PACKAGES := Aperture Aperture_prebuilt Camera2 Snap

@@ -283,8 +283,11 @@ PRODUCT_PACKAGES += \
 
 # Prebuilt packages
 PRODUCT_PACKAGES += \
-    CamX \
+    GoogleCameraGoPrebuilt \
     Via
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-gcam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-gcam.xml
 
 # Properties
 -include $(LOCAL_PATH)/properties.mk
